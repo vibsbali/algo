@@ -14,7 +14,7 @@ namespace Algorithms.LinkedList
         public class Node
         {
             public T Value { get; }
-            public Node Next { get; set; }
+            public Node Next { get; internal set; }
 
             public Node(T value)
             {
