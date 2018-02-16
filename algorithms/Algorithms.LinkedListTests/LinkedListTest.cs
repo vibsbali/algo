@@ -110,6 +110,33 @@ namespace Algorithms.LinkedListTests
 
         [TestMethod]
         [TestCategory("RemovingElements")]
+        public void RemoveHeadWhenOnlyTwoItems()
+        {
+            var linkedList = new SinglyLinkedList<int>();
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+
+            Assert.IsTrue(linkedList.Count == 2);
+            Assert.IsTrue(linkedList.Contains(1));
+            Assert.IsTrue(linkedList.Contains(2));
+
+            Assert.IsTrue(linkedList.Head.Value.Equals(1));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(2));
+
+            linkedList.Remove(1);
+
+            Assert.IsTrue(linkedList.Head.Equals(linkedList.Tail));
+            Assert.IsTrue(linkedList.Count == 1);
+
+            Assert.IsFalse(linkedList.Contains(1));
+            Assert.IsTrue(linkedList.Contains(2));
+
+            Assert.IsTrue(linkedList.Head.Value.Equals(2));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(2));
+        }
+
+        [TestMethod]
+        [TestCategory("RemovingElements")]
         public void RemoveTail()
         {
             var linkedList = new SinglyLinkedList<int>();
