@@ -85,15 +85,27 @@ namespace Algorithms.LinkedListTests
         public void RemoveHead()
         {
             var linkedList = new SinglyLinkedList<int>();
-            linkedList.Add(1);
-            linkedList.Add(2);
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
 
-            Assert.IsTrue(linkedList.Count == 2);
+            Assert.IsTrue(linkedList.Count == 3);
             Assert.IsTrue(linkedList.Contains(1));
             Assert.IsTrue(linkedList.Contains(2));
+            Assert.IsTrue(linkedList.Contains(3));
             Assert.IsTrue(linkedList.Head.Value.Equals(1));
-            Assert.IsTrue(linkedList.Tail.Value.Equals(2));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(3));
+
+            linkedList.Remove(1);
+
             Assert.IsFalse(linkedList.Head.Equals(linkedList.Tail));
+            Assert.IsTrue(linkedList.Count == 2);
+
+            Assert.IsFalse(linkedList.Contains(1));
+            Assert.IsTrue(linkedList.Contains(2));
+            Assert.IsTrue(linkedList.Contains(3));
+            Assert.IsTrue(linkedList.Head.Value.Equals(2));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(3));
         }
 
         [TestMethod]
@@ -101,15 +113,26 @@ namespace Algorithms.LinkedListTests
         public void RemoveTail()
         {
             var linkedList = new SinglyLinkedList<int>();
-            linkedList.Add(1);
-            linkedList.Add(2);
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
 
+            Assert.IsTrue(linkedList.Count == 3);
+            Assert.IsTrue(linkedList.Contains(1));
+            Assert.IsTrue(linkedList.Contains(2));
+            Assert.IsTrue(linkedList.Contains(3));
+            Assert.IsTrue(linkedList.Head.Value.Equals(1));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(3));
+
+            linkedList.Remove(3);
+
+            Assert.IsFalse(linkedList.Head.Equals(linkedList.Tail));
             Assert.IsTrue(linkedList.Count == 2);
             Assert.IsTrue(linkedList.Contains(1));
             Assert.IsTrue(linkedList.Contains(2));
+            Assert.IsFalse(linkedList.Contains(3));
             Assert.IsTrue(linkedList.Head.Value.Equals(1));
             Assert.IsTrue(linkedList.Tail.Value.Equals(2));
-            Assert.IsFalse(linkedList.Head.Equals(linkedList.Tail));
         }
 
         [TestMethod]
@@ -117,15 +140,43 @@ namespace Algorithms.LinkedListTests
         public void RemoveMiddle()
         {
             var linkedList = new SinglyLinkedList<int>();
-            linkedList.Add(1);
-            linkedList.Add(2);
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
 
-            Assert.IsTrue(linkedList.Count == 2);
+            Assert.IsTrue(linkedList.Count == 3);
             Assert.IsTrue(linkedList.Contains(1));
             Assert.IsTrue(linkedList.Contains(2));
+            Assert.IsTrue(linkedList.Contains(3));
             Assert.IsTrue(linkedList.Head.Value.Equals(1));
-            Assert.IsTrue(linkedList.Tail.Value.Equals(2));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(3));
+
+            linkedList.Remove(2);
+
             Assert.IsFalse(linkedList.Head.Equals(linkedList.Tail));
+            Assert.IsTrue(linkedList.Count == 2);
+            Assert.IsTrue(linkedList.Contains(1));
+            Assert.IsFalse(linkedList.Contains(2));
+            Assert.IsTrue(linkedList.Contains(3));
+            Assert.IsTrue(linkedList.Head.Value.Equals(1));
+            Assert.IsTrue(linkedList.Tail.Value.Equals(3));
+        }
+
+        [TestMethod]
+        [TestCategory("CopyingToArray")]
+        public void CopyToArray()
+        {
+            var linkedList = new SinglyLinkedList<int>();
+            linkedList.AddLast(1);
+            linkedList.AddLast(2);
+            linkedList.AddLast(3);
+
+            var sourceArray = new int[3];
+            linkedList.CopyTo(sourceArray, 0);
+
+            Assert.IsTrue(sourceArray[0] == 1);
+            Assert.IsTrue(sourceArray[1] == 2);
+            Assert.IsTrue(sourceArray[2] == 3);
         }
     }
 }

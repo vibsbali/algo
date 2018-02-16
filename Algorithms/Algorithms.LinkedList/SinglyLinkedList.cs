@@ -97,7 +97,10 @@ namespace Algorithms.LinkedList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            foreach (var node in this)
+            {
+                array[arrayIndex++] = node;
+            }
         }
 
         public bool Remove(T item)
@@ -131,7 +134,7 @@ namespace Algorithms.LinkedList
                     else if (currentNode.Next == null)
                     {
                         //It is tail
-                        Tail = null;
+                        previous.Next = null;
                         Tail = previous;
                     }
                     else
