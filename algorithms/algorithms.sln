@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.LinkedList", "Al
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.LinkedListTests", "Algorithms.LinkedListTests\Algorithms.LinkedListTests.csproj", "{40163B66-FAD2-4D69-82CB-C93C1F6B85A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.ArrayList", "Algorithms.ArrayList\Algorithms.ArrayList.csproj", "{F1359A80-8AD4-4F4F-8262-2C7513A88326}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{40163B66-FAD2-4D69-82CB-C93C1F6B85A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40163B66-FAD2-4D69-82CB-C93C1F6B85A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40163B66-FAD2-4D69-82CB-C93C1F6B85A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1359A80-8AD4-4F4F-8262-2C7513A88326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1359A80-8AD4-4F4F-8262-2C7513A88326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1359A80-8AD4-4F4F-8262-2C7513A88326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1359A80-8AD4-4F4F-8262-2C7513A88326}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
