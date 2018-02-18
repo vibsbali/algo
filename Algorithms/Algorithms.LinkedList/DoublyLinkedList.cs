@@ -40,17 +40,42 @@ namespace Algorithms.LinkedList
 
         public void Add(T item)
         {
-            throw new NotImplementedException();
+            AddToBack(item);
         }
 
         public void AddToBack(T item)
         {
+            var node = new Node(item);
+            if (Tail == null)
+            {
+                AddToFront(item);
+                return;
+            }
+            else
+            {
+                Tail.Next = node;
+                node.Previous = Tail;
+                Tail = node;
+            }
 
+            ++Count;
         }
 
         public void AddToFront(T item)
         {
+            var node = new Node(item);
+            if (Head == null)
+            {
+                Head = Tail = node;
+            }
+            else
+            {
+                Head.Previous = node;
+                node.Next = Head;
+                Head = node;
+            }
 
+            ++Count;
         }
 
         public void Clear()
@@ -76,7 +101,12 @@ namespace Algorithms.LinkedList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            var node = Head;
+            while (node != null)
+            {
+                array[arrayIndex++] = node.Value;
+                node = node.Next;
+            }
         }
 
         public bool Remove(T item)
@@ -102,7 +132,13 @@ namespace Algorithms.LinkedList
                         Head = Head.Next;
                     } else if (current == Tail)
                     {
-                        
+                        Tail = Tail.Previous;
+                        Tail.Next = null;
+                    }
+                    else
+                    {
+                        current.Previous.Next = current.Next;
+                        current.Next.Previous = current.Previous;
                     }
 
                         --Count;
