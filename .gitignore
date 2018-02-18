@@ -3,3 +3,6 @@
 ################################################################################
 
 /algorithms/Algorithms.LinkedList/obj/Debug
+/algorithms/Algorithms.LinkedListTests/bin/Debug
+/algorithms/Algorithms.LinkedListTests/obj/Debug
+/algorithms/Algorithms.LinkedList/bin/Debug
