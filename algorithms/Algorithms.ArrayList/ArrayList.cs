@@ -78,7 +78,10 @@ namespace Algorithms.ArrayList
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Count; i++)
+            {
+                array[arrayIndex++] = backingStore[i];
+            }
         }
 
         public bool Remove(T item)
@@ -89,12 +92,23 @@ namespace Algorithms.ArrayList
                 return false;
             }
 
+            //OK to --Count 
+            --Count;
             for (int i = indexOfItemToRemove; i < Count; i++)
             {
-                backingStore[i] = backingStore[indexOfItemToRemove + 1];
+                backingStore[i] = backingStore[i + 1];
+            }
+            backingStore[Count] = default(T);
+            
+
+            if (backingStore.Length > 4 && Count < backingStore.Length / 3 )
+            {
+                var tempArray = new T[Count * 2];
+                Array.Copy(backingStore, 0, tempArray, 0, Count);
+                backingStore = tempArray;
             }
 
-            --Count;
+
             return true;
         }
 
@@ -117,18 +131,50 @@ namespace Algorithms.ArrayList
         //Can't add items outside the bounds ie. greater than count
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            // 0 -> 1 -> 2 count = 3 lastIndex = 2
+            if (index > Count || index < 0)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            if (Count == backingStore.Length)
+            {
+                GrowBackingStore();
+            }
+
+            //Is it being inserted inside the existing items
+            if (index < Count)
+            {
+                Array.Copy(backingStore, index, backingStore, index + 1, Count - index);
+            }
+
+            backingStore[index] = item;
+            ++Count;
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            if (index < 0 || index >= Count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            
+            --Count;
+            for (int i = index - 1; i < Count; i++)
+            {
+                backingStore[i] = backingStore[i + 1];
+            }
         }
 
         public T this[int index]
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return backingStore[index]; }
+            set
+            {
+                Insert(index, value);
+            }
         }
     }
 }
+ 
