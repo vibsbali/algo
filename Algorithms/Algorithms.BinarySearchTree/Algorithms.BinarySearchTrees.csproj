@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D576470F-6326-4AE2-B49A-148A86898571}</ProjectGuid>
+    <ProjectGuid>{8E3F0350-0E4C-4244-9E30-23CBC15A2317}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Algorithms.StackAndQueue</RootNamespace>
-    <AssemblyName>Algorithms.StackAndQueue</AssemblyName>
+    <RootNamespace>Algorithms.BinarySearchTrees</RootNamespace>
+    <AssemblyName>Algorithms.BinarySearchTrees</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,8 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Queue.cs" />
-    <Compile Include="Stack.cs" />
+    <Compile Include="BinarySearchTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
