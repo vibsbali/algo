@@ -1,11 +1,8 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+
 [assembly: InternalsVisibleTo("Algorithms.BinarySearchTreesTests")]
 
 namespace Algorithms.BinarySearchTrees
@@ -192,14 +189,15 @@ namespace Algorithms.BinarySearchTrees
                 //If node to remove has a right child which inturn has a left child
                 if (nodeToRemove.RightChild.LeftChild != null)
                 {
+                    var leftMostNodeWithParent = GetLeftMostNodeWithParent(nodeToRemove.RightChild);
+                    var leftMostNodesParent = leftMostNodeWithParent.Item2;
+                    var leftMostNode = leftMostNodeWithParent.Item1;
+
                     //find the leftmost item and replace in the place where node is being removed    
                     //is it head node
                     if (parentNode == null)
                     {
-                        var leftMostNodeWithParent = GetLeftMostNodeWithParent(nodeToRemove.RightChild);
-                        var leftMostNodesParent = leftMostNodeWithParent.Item2;
-                        var leftMostNode = leftMostNodeWithParent.Item1;
-
+                       
                         leftMostNodesParent.LeftChild = null;
                         leftMostNode.LeftChild = Head.LeftChild;
                         leftMostNode.RightChild = Head.RightChild;
@@ -208,7 +206,20 @@ namespace Algorithms.BinarySearchTrees
                     }
                     else
                     {
-
+                        if (IsLeftOfParent(nodeToRemove, parentNode))
+                        {
+                            parentNode.LeftChild = leftMostNode;
+                            leftMostNodesParent.LeftChild = null;
+                            leftMostNode.LeftChild = nodeToRemove.LeftChild;
+                            leftMostNode.RightChild = nodeToRemove.RightChild;
+                        }
+                        else
+                        {
+                            parentNode.RightChild = leftMostNode;
+                            leftMostNodesParent.LeftChild = null;
+                            leftMostNode.LeftChild = nodeToRemove.LeftChild;
+                            leftMostNode.RightChild = nodeToRemove.RightChild;
+                        }
                     }
 
 

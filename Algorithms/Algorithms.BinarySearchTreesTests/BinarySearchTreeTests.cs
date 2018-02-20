@@ -234,5 +234,48 @@ namespace Algorithms.BinarySearchTreesTests
         }
 
 
+        [TestMethod]
+        [TestCategory("Node to remove has a right child which has a left child")]
+        public void InitialiseNewTree_With_Eight_Nodes_Remove_Node_Left_Of_Head()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(125);
+            binarySearchTree.Add(50);
+            binarySearchTree.Add(95);
+            binarySearchTree.Add(90);
+            binarySearchTree.Add(99);
+            binarySearchTree.Add(80);
+
+
+            binarySearchTree.Remove(75);
+            Assert.AreEqual(7, binarySearchTree.Count);
+            Assert.AreEqual(100, binarySearchTree.Head.Value);
+            Assert.AreEqual(80, binarySearchTree.Head.LeftChild.Value); ;
+            Assert.AreEqual(125, binarySearchTree.Head.RightChild.Value); ;
+            Assert.IsNull(binarySearchTree.Head.LeftChild.RightChild.LeftChild.LeftChild);
+        }
+
+        [TestMethod]
+        [TestCategory("Node to remove has a right child which has a left child")]
+        public void InitialiseNewTree_With_Seven_Nodes_Remove_Node_Right_Of_Head()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(125);
+            binarySearchTree.Add(115);
+            binarySearchTree.Add(135);
+            binarySearchTree.Add(130);
+            binarySearchTree.Add(140);
+            
+            binarySearchTree.Remove(125);
+            Assert.AreEqual(6, binarySearchTree.Count);
+            Assert.AreEqual(100, binarySearchTree.Head.Value);
+            Assert.AreEqual(75, binarySearchTree.Head.LeftChild.Value); ;
+            Assert.AreEqual(130, binarySearchTree.Head.RightChild.Value); ;
+            Assert.IsNull(binarySearchTree.Head.RightChild.LeftChild.LeftChild);
+        }
     }
 }
