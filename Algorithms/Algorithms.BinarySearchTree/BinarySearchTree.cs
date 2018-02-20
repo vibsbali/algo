@@ -27,6 +27,11 @@ namespace Algorithms.BinarySearchTrees
             {
                 return this.Value.CompareTo(other.Value);
             }
+
+            public override string ToString()
+            {
+                return Value.ToString();
+            }
         }
 
         internal BinaryNode Head { get; private set; }
@@ -82,7 +87,8 @@ namespace Algorithms.BinarySearchTrees
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Head = null;
+            Count = 0;
         }
 
         public bool Contains(T item)
@@ -98,10 +104,106 @@ namespace Algorithms.BinarySearchTrees
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            var resultOfFindWithParent = FindWithParent(item);
+            var isPresent = resultOfFindWithParent.Item1;
+            var nodeToRemove = resultOfFindWithParent.Item2;
+            var parentNode = resultOfFindWithParent.Item3;
+
+            if (isPresent)
+            {
+                //Is it tail
+                if (nodeToRemove.LeftChild == null && nodeToRemove.RightChild == null)
+                {
+                    //Is it Head
+                    if (parentNode == null)
+                    {
+                        Clear();
+                        return true;
+                    }
+
+                    //If not head
+                    if (IsLeftOfParent(nodeToRemove, parentNode))
+                    {
+                        parentNode.LeftChild = null;
+                    }
+                    else
+                    {
+                        parentNode.RightChild = null;
+                    }
+                    --Count;
+                    return true;
+                }
+
+                //If node to remove has no right child - promote left child
+                if (nodeToRemove.RightChild == null)
+                {
+                    //is it head
+                    if (parentNode == null)
+                    {
+                        Head = nodeToRemove.LeftChild;
+                    }
+                    else
+                    {
+                        if (IsLeftOfParent(nodeToRemove, parentNode))
+                        {
+                            parentNode.LeftChild = nodeToRemove.LeftChild;
+                        }
+                        else
+                        {
+                            parentNode.RightChild = nodeToRemove.LeftChild;
+                        }
+                    }
+                    --Count;
+                    return true;
+                }
+
+                //If node to remove has a right child which doesn't have a left child
+                if (nodeToRemove.RightChild.LeftChild == null)
+                {
+                    //is it head
+                    if (parentNode == null)
+                    {
+                        var currentLeftNode = Head.LeftChild;
+                        Head = nodeToRemove.RightChild;
+                        Head.LeftChild = currentLeftNode;
+                    }
+                    else
+                    {
+                        if (IsLeftOfParent(nodeToRemove, parentNode))
+                        {
+                            var currentLeftNode = nodeToRemove.LeftChild;
+                            parentNode.LeftChild = nodeToRemove.RightChild;
+                            parentNode.LeftChild.LeftChild = currentLeftNode;
+                        }
+                        else
+                        {
+                            var currentLeftNode = nodeToRemove.LeftChild;
+                            parentNode.RightChild = nodeToRemove.RightChild;
+                            parentNode.RightChild.LeftChild = currentLeftNode;
+                        }
+                    }
+
+
+                    --Count;
+                    return true;
+                }
+
+                //If node to remove has a right child which inturn has a left child
+                if (nodeToRemove.RightChild.LeftChild != null)
+                {
+                    //find the leftmost item and replace in the place where node is being removed        
+                }
+            }
+
+            return false;
         }
 
-        private Tuple<bool, BinaryNode> FindWithParent(T value)
+        private bool IsLeftOfParent(BinaryNode nodeToRemove, BinaryNode parentNode)
+        {
+            return nodeToRemove.CompareTo(parentNode) < 0;
+        }
+
+        private Tuple<bool, BinaryNode, BinaryNode> FindWithParent(T value)
         {
             BinaryNode parentNode = null;
             BinaryNode currentNode = Head;
@@ -110,7 +212,7 @@ namespace Algorithms.BinarySearchTrees
             {
                 if (currentNode.Value.CompareTo(value) == 0)
                 {
-                    return new Tuple<bool, BinaryNode>(true, parentNode);
+                    return new Tuple<bool, BinaryNode, BinaryNode>(true, currentNode, parentNode);
                 }
 
                 //Update parent node
@@ -126,7 +228,7 @@ namespace Algorithms.BinarySearchTrees
             }
 
 
-            return new Tuple<bool, BinaryNode>(false, parentNode);
+            return new Tuple<bool, BinaryNode, BinaryNode>(false, null, null);
         }
 
         public int Count { get; private set; }
