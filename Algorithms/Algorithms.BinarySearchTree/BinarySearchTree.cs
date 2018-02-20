@@ -40,7 +40,49 @@ namespace Algorithms.BinarySearchTrees
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return InOrderTraversalUsingStack();
+        }
+
+
+        //if (node != null)
+        //{
+        //    TraverseInOrder(node.LeftChild, actionToPerform);
+        //    actionToPerform(node.Value);
+        //    TraverseInOrder(node.RightChild, actionToPerform);
+        //}
+        private IEnumerator<T> InOrderTraversalUsingStack()
+        {
+            var stack = new Stack<BinaryNode>();
+
+            bool goLeftNext = true;
+            var currentNode = Head;
+
+            stack.Push(currentNode);
+
+            while (stack.Count > 0)
+            {
+                if (goLeftNext)
+                {
+                    while (currentNode.LeftChild != null)
+                    {
+                        stack.Push(currentNode);
+                        currentNode = currentNode.LeftChild;
+                    }
+                }
+
+                yield return currentNode.Value;
+
+                if (currentNode.RightChild != null)
+                {
+                    currentNode = currentNode.RightChild;
+                    goLeftNext = true;
+                }
+                else
+                {
+                    currentNode = stack.Pop();
+                    goLeftNext = false;
+                }
+            }
         }
 
         public void Add(T item)
@@ -197,7 +239,7 @@ namespace Algorithms.BinarySearchTrees
                     //is it head node
                     if (parentNode == null)
                     {
-                       
+
                         leftMostNodesParent.LeftChild = null;
                         leftMostNode.LeftChild = Head.LeftChild;
                         leftMostNode.RightChild = Head.RightChild;
@@ -280,6 +322,51 @@ namespace Algorithms.BinarySearchTrees
 
 
             return new Tuple<bool, BinaryNode, BinaryNode>(false, null, null);
+        }
+
+        public void PreOrderTraversal(Action<T> actionToPerform)
+        {
+            TraversePreOrder(Head, actionToPerform);
+        }
+
+        private void TraversePreOrder(BinaryNode node, Action<T> actionToPerform)
+        {
+            if (node != null)
+            {
+                actionToPerform(node.Value);
+                TraversePreOrder(node.LeftChild, actionToPerform);
+                TraversePreOrder(node.RightChild, actionToPerform);
+            }
+        }
+
+        public void PostOrderTraversal(Action<T> actionToPerform)
+        {
+            TraversePostOrder(Head, actionToPerform);
+        }
+
+        private void TraversePostOrder(BinaryNode node, Action<T> actionToPerform)
+        {
+            if (node != null)
+            {
+                TraversePostOrder(node.LeftChild, actionToPerform);
+                TraversePostOrder(node.RightChild, actionToPerform);
+                actionToPerform(node.Value);
+            }
+        }
+
+        public void InOrderTraversal(Action<T> actionToPerform)
+        {
+            TraverseInOrder(Head, actionToPerform);
+        }
+
+        private void TraverseInOrder(BinaryNode node, Action<T> actionToPerform)
+        {
+            if (node != null)
+            {
+                TraverseInOrder(node.LeftChild, actionToPerform);
+                actionToPerform(node.Value);
+                TraverseInOrder(node.RightChild, actionToPerform);
+            }
         }
 
         public int Count { get; private set; }

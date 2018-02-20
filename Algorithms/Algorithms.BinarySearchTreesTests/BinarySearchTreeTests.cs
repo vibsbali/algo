@@ -277,5 +277,53 @@ namespace Algorithms.BinarySearchTreesTests
             Assert.AreEqual(130, binarySearchTree.Head.RightChild.Value); ;
             Assert.IsNull(binarySearchTree.Head.RightChild.LeftChild.LeftChild);
         }
+
+        [TestMethod]
+        [TestCategory("Traverse")]
+        public void TraversePreOrder()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(50);
+            binarySearchTree.Add(200);
+            binarySearchTree.Add(25);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(175);
+            binarySearchTree.Add(225);
+
+            binarySearchTree.PreOrderTraversal(i => Console.WriteLine(i));
+        }
+
+        [TestMethod]
+        [TestCategory("Traverse")]
+        public void TraversePostOrder()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(50);
+            binarySearchTree.Add(200);
+            binarySearchTree.Add(25);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(175);
+            binarySearchTree.Add(225);
+
+            binarySearchTree.PostOrderTraversal(i => Console.WriteLine(i));
+        }
+
+        [TestMethod]
+        [TestCategory("Traverse")]
+        public void TraverseInOrderTraversal()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(50);
+            binarySearchTree.Add(200);
+            binarySearchTree.Add(25);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(175);
+            binarySearchTree.Add(225);
+
+            binarySearchTree.InOrderTraversal(i => Console.WriteLine(i));
+        }
     }
 }
