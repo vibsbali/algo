@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -191,11 +192,50 @@ namespace Algorithms.BinarySearchTrees
                 //If node to remove has a right child which inturn has a left child
                 if (nodeToRemove.RightChild.LeftChild != null)
                 {
-                    //find the leftmost item and replace in the place where node is being removed        
+                    //find the leftmost item and replace in the place where node is being removed    
+                    //is it head node
+                    if (parentNode == null)
+                    {
+                        var leftMostNodeWithParent = GetLeftMostNodeWithParent(nodeToRemove.RightChild);
+                        var leftMostNodesParent = leftMostNodeWithParent.Item2;
+                        var leftMostNode = leftMostNodeWithParent.Item1;
+
+                        leftMostNodesParent.LeftChild = null;
+                        leftMostNode.LeftChild = Head.LeftChild;
+                        leftMostNode.RightChild = Head.RightChild;
+
+                        Head = leftMostNode;
+                    }
+                    else
+                    {
+
+                    }
+
+
+                    --Count;
+                    return true;
                 }
             }
 
             return false;
+        }
+
+        private Tuple<BinaryNode, BinaryNode> GetLeftMostNodeWithParent(BinaryNode startingNode)
+        {
+            BinaryNode parent = null;
+            var currentNode = startingNode;
+            if (startingNode.LeftChild == null)
+            {
+                return new Tuple<BinaryNode, BinaryNode>(startingNode, parent);
+            }
+
+            while (currentNode.LeftChild != null)
+            {
+                parent = currentNode;
+                currentNode = currentNode.LeftChild;
+            }
+
+            return new Tuple<BinaryNode, BinaryNode>(currentNode, parent);
         }
 
         private bool IsLeftOfParent(BinaryNode nodeToRemove, BinaryNode parentNode)

@@ -152,7 +152,7 @@ namespace Algorithms.BinarySearchTreesTests
 
 
         [TestMethod]
-        [TestCategory("Node to remove has a right child which doesn't have left child")]
+        [TestCategory("Node to remove has a right child which doesn't has a left child")]
         public void InitialiseNewTree_With_Five_Nodes_Remove_Head_Heads_RightChild_Has_No_Left_Child()
         {
             var binarySearchTree = new BinarySearchTree<int>();
@@ -169,7 +169,7 @@ namespace Algorithms.BinarySearchTreesTests
         }
 
         [TestMethod]
-        [TestCategory("Node to remove has a right child which doesn't have left child")]
+        [TestCategory("Node to remove has a right child which doesn't has a left child")]
         public void InitialiseNewTree_With_Seven_Nodes_Remove_Node_Left_Of_Parent_Whos_RightChild_Has_No_Left_Child()
         {
             var binarySearchTree = new BinarySearchTree<int>();
@@ -190,7 +190,7 @@ namespace Algorithms.BinarySearchTreesTests
         }
 
         [TestMethod]
-        [TestCategory("Node to remove has a right child which doesn't have left child")]
+        [TestCategory("Node to remove has a right child which doesn't has a left child")]
         public void InitialiseNewTree_With_Seven_Nodes_Remove_Node_Right_Of_Parent_Whos_RightChild_Has_No_Left_Child()
         {
             var binarySearchTree = new BinarySearchTree<int>();
@@ -208,6 +208,29 @@ namespace Algorithms.BinarySearchTreesTests
             Assert.AreEqual(135, binarySearchTree.Head.RightChild.Value); ;
             Assert.AreEqual(115, binarySearchTree.Head.RightChild.LeftChild.Value); ;
             Assert.AreEqual(145, binarySearchTree.Head.RightChild.RightChild.Value);
+        }
+
+
+        [TestMethod]
+        [TestCategory("Node to remove has a right child which has a left child")]
+        public void InitialiseNewTree_With_Seven_Nodes_Remove_Head()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(125);
+            binarySearchTree.Add(115);
+            binarySearchTree.Add(135);
+            binarySearchTree.Add(145);
+            binarySearchTree.Add(155);
+
+
+            binarySearchTree.Remove(100);
+            Assert.AreEqual(6, binarySearchTree.Count);
+            Assert.AreEqual(115, binarySearchTree.Head.Value);
+            Assert.AreEqual(75, binarySearchTree.Head.LeftChild.Value); ;
+            Assert.AreEqual(125, binarySearchTree.Head.RightChild.Value); ;
+            Assert.IsNull(binarySearchTree.Head.RightChild.LeftChild);
         }
 
 
