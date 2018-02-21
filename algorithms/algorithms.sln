@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.BinarySearchTree
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.CustomHashtable", "Algorithms.CustomHashtable\Algorithms.CustomHashtable.csproj", "{3523FEF7-E90A-4AD5-A200-C448872D12DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.HashTableTests", "Algorithms.HashTableTests\Algorithms.HashTableTests.csproj", "{BD083AC1-01E9-453C-8232-043247965CE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{3523FEF7-E90A-4AD5-A200-C448872D12DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3523FEF7-E90A-4AD5-A200-C448872D12DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3523FEF7-E90A-4AD5-A200-C448872D12DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD083AC1-01E9-453C-8232-043247965CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD083AC1-01E9-453C-8232-043247965CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD083AC1-01E9-453C-8232-043247965CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD083AC1-01E9-453C-8232-043247965CE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

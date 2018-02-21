@@ -20,7 +20,7 @@ namespace Algorithms.CustomHashtable
 
         private int count;
 
-        public double FillFactor => count > 0 ? backingStore.Length / count : 0;
+        public double FillFactor => count > 0 ? count / backingStore.Length : 0;
 
         LinkedList<HashTableNode>[] backingStore = new LinkedList<HashTableNode>[100];
 
@@ -32,11 +32,12 @@ namespace Algorithms.CustomHashtable
                 IncreaseBackingStore();
             }
 
-            var index = key.GetHashCode() / backingStore.Length;
+            var index = GetIndex(key);
 
             if (backingStore[index] == null)
             {
                 backingStore[index] = new LinkedList<HashTableNode>();
+                ++count;
             }
 
             var currentNode = backingStore[index].First;
@@ -50,13 +51,40 @@ namespace Algorithms.CustomHashtable
             }
 
             backingStore[index].AddLast(new HashTableNode(key, value));
-            ++count;
+        }
+
+        private int GetIndex(TKey key)
+        {
+            return Math.Abs(key.GetHashCode()) % backingStore.Length;
         }
 
         private void IncreaseBackingStore()
         {
             throw new NotImplementedException();
         }
+
+        public bool Contains(TKey key)
+        {
+            var index = GetIndex(key);
+
+            if (backingStore[index] != null)
+            {
+                var currentNode = backingStore[index].First;
+                while (currentNode != null)
+                {
+                    if (currentNode.Value.Key.Equals(key))
+                    {
+                        return true;
+                    }
+
+                    currentNode = currentNode.Next;
+                }
+            }
+
+            return false;
+        }
+
+
     }
 }
 
