@@ -22,7 +22,7 @@ namespace Algorithms.CustomHashtable
 
         public double FillFactor => count > 0 ? count / backingStore.Length : 0;
 
-        LinkedList<HashTableNode>[] backingStore = new LinkedList<HashTableNode>[100];
+        LinkedList<HashTableNode>[] backingStore = new LinkedList<HashTableNode>[1];
 
         public void Add(TKey key, TValue value)
         {
@@ -58,9 +58,35 @@ namespace Algorithms.CustomHashtable
             return Math.Abs(key.GetHashCode()) % backingStore.Length;
         }
 
+        private int GetIndex(TKey key, int length)
+        {
+            return Math.Abs(key.GetHashCode()) % length;
+        }
+
+
         private void IncreaseBackingStore()
         {
-            throw new NotImplementedException();
+            var tempStore = new LinkedList<HashTableNode>[backingStore.Length * 2];
+            for (int i = 0; i < backingStore.Length; i++)
+            {
+                if (backingStore[i] != null)
+                {
+                    var key = backingStore[i].First.Value.Key;
+                    var newIndex = GetIndex(key, tempStore.Length);
+
+                    if (tempStore[newIndex] == null)
+                    {
+                        tempStore[newIndex] = new LinkedList<HashTableNode>();
+                    }
+
+                    foreach (var hashTableNode in backingStore[i])
+                    {
+                        tempStore[newIndex].AddLast(hashTableNode);
+                    }
+                }
+            }
+
+            backingStore = tempStore;
         }
 
         public bool Contains(TKey key)
@@ -84,7 +110,26 @@ namespace Algorithms.CustomHashtable
             return false;
         }
 
+        public TValue GetElement(TKey key)
+        {
+            var index = GetIndex(key);
 
+            if (backingStore[index] != null)
+            {
+                LinkedListNode<HashTableNode> currentNode = backingStore[index].First;
+                while (currentNode != null)
+                {
+                    if (currentNode.Value.Key.Equals(key))
+                    {
+                        return currentNode.Value.Value;
+                    }
+
+                    currentNode = currentNode.Next;
+                }
+            }
+
+            throw new InvalidOperationException("No key/value pair found");
+        }
     }
 }
 
