@@ -16,6 +16,9 @@ namespace Algorithms.BinarySearchTrees
             {
                 Value = value;
             }
+
+            public bool HasLeftChild => this.LeftChild != null;
+            public bool HasRightChild => this.RightChild != null;
             public BinaryNode LeftChild { get; set; }
             public BinaryNode RightChild { get; set; }
 
@@ -129,6 +132,46 @@ namespace Algorithms.BinarySearchTrees
         {
             Head = null;
             Count = 0;
+        }
+
+        public T[] BreadthFirstSearch()
+        {
+            var queue = new Queue<BinaryNode>();
+            var finalQueue = new List<T>();
+
+            queue.Enqueue(Head);
+            PrintBreadthFirstSearch(queue, finalQueue);
+
+            return finalQueue.ToArray();
+        }
+
+        private void PrintBreadthFirstSearch(Queue<BinaryNode> queue, List<T> finalCollection)
+        {
+            var tempQueue = new Queue<BinaryNode>();
+            if (queue.Count == 0)
+            {
+                return;
+            }
+
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+                finalCollection.Add(node.Value);
+
+                if (node.HasLeftChild)
+                {
+                    tempQueue.Enqueue(node.LeftChild);
+                }
+
+                if (node.HasRightChild)
+                {
+                    tempQueue.Enqueue(node.RightChild);
+                }
+            }
+
+
+
+            PrintBreadthFirstSearch(tempQueue, finalCollection);
         }
 
         public bool Contains(T item)

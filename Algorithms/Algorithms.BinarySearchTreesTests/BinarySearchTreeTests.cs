@@ -1,6 +1,6 @@
-﻿using System;
-using Algorithms.BinarySearchTrees;
+﻿using Algorithms.BinarySearchTrees;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Algorithms.BinarySearchTreesTests
 {
@@ -46,6 +46,7 @@ namespace Algorithms.BinarySearchTreesTests
             Assert.IsTrue(binarySearchTree.Contains(75));
             Assert.IsTrue(binarySearchTree.Contains(125));
         }
+
 
         [TestMethod]
         public void InitialiseNewTree_AddThreeItems_Of_SameValue_Assert_Count_Three_And_Check_Left_Right()
@@ -269,7 +270,7 @@ namespace Algorithms.BinarySearchTreesTests
             binarySearchTree.Add(135);
             binarySearchTree.Add(130);
             binarySearchTree.Add(140);
-            
+
             binarySearchTree.Remove(125);
             Assert.AreEqual(6, binarySearchTree.Count);
             Assert.AreEqual(100, binarySearchTree.Head.Value);
@@ -324,6 +325,29 @@ namespace Algorithms.BinarySearchTreesTests
             binarySearchTree.Add(225);
 
             binarySearchTree.InOrderTraversal(i => Console.WriteLine(i));
+        }
+
+        [TestMethod]
+        [TestCategory("Traverse")]
+        public void BreadthFirstTraversal()
+        {
+            var binarySearchTree = new BinarySearchTree<int>();
+            binarySearchTree.Add(100);
+            binarySearchTree.Add(50);
+            binarySearchTree.Add(200);
+            binarySearchTree.Add(25);
+            binarySearchTree.Add(75);
+            binarySearchTree.Add(175);
+            binarySearchTree.Add(225);
+
+            var collection = binarySearchTree.BreadthFirstSearch();
+            Assert.AreEqual(100, collection[0]);
+            Assert.AreEqual(50, collection[1]);
+            Assert.AreEqual(200, collection[2]);
+            Assert.AreEqual(25, collection[3]);
+            Assert.AreEqual(75, collection[4]);
+            Assert.AreEqual(175, collection[5]);
+            Assert.AreEqual(225, collection[6]);
         }
     }
 }
