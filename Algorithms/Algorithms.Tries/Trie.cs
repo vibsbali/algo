@@ -61,5 +61,12 @@ namespace Algorithms.Tries
 
             return currentNode.Value.Equals(wordToFind.ToLower());
         }
+
+        public string[] GenerateAutocomplete(string wordToComplete)
+        {
+
+
+            throw new NotImplementedException();
+        }
     }
 }
