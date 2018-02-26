@@ -14,10 +14,12 @@ namespace Algorithms.BinarySearchTrees
         internal class BinaryNode<T>
         {
             public T Value { get; set; }
-            
+
             public BinaryNode<T> Parent { get; set; }
             public BinaryNode<T> LeftChild { get; set; }
             public BinaryNode<T> RightChild { get; set; }
+            public bool HasRightChild => this.RightChild != null;
+            public bool HasLeftChild => this.LeftChild != null;
 
             public BinaryNode(T value, BinaryNode<T> parent = null)
             {
@@ -29,6 +31,41 @@ namespace Algorithms.BinarySearchTrees
         public bool Remove(T item)
         {
             throw new NotImplementedException();
+            var node = FindNode(item);
+
+            if (node == null)
+            {
+                return false;
+            }
+
+            //check if item to remove is head
+            if (object.ReferenceEquals(node, Head))
+            {
+                //check if only one item
+                if (!node.HasLeftChild && !node.HasRightChild)
+                {
+                    Clear();
+                    return true;
+                }
+
+
+                if (!node.HasRightChild)
+                {
+                    Head = null;
+                    Head = node.LeftChild;
+                    Head.Parent = null;
+                    --Count;
+                    return true;
+                }
+
+                //node to remove has a right child which doesn't have a left child
+                if (!node.RightChild.HasLeftChild)
+                {
+                    //TODO Complete
+                }
+            }
+
+            return false;
         }
 
         public int Count { get; private set; }
@@ -77,17 +114,23 @@ namespace Algorithms.BinarySearchTrees
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            Head = null;
+            Count = 0;
         }
 
         public bool Contains(T value)
+        {
+            return FindNode(value) != null;
+        }
+
+        private BinaryNode<T> FindNode(T value)
         {
             var current = Head;
             while (current != null)
             {
                 if (current.Value.Equals(value))
                 {
-                    return true;
+                    return current;
                 }
 
                 if (current.Value.CompareTo(value) < 0)
@@ -100,7 +143,7 @@ namespace Algorithms.BinarySearchTrees
                 }
             }
 
-            return false;
+            return null;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
