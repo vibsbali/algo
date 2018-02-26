@@ -64,9 +64,43 @@ namespace Algorithms.Tries
 
         public string[] GenerateAutocomplete(string wordToComplete)
         {
+            List<string> wordsToReturn = new List<string>();
+            var charArray = wordToComplete.ToLower().ToCharArray();
+            var currentNode = _roots[charArray[0]];
+            var i = 0;
 
+            //Loop to get to the final node from where to start the search
+            while (currentNode != null && i != charArray.Length)
+            {
+                currentNode = currentNode.Nodes[charArray[i]];
+                i++;
+            }
+
+            if (currentNode != null)
+            {
+                foreach (var currentNodeNode in currentNode.Nodes.Where(n => n != null))
+                {
+                    wordsToReturn.AddRange(GetWord(currentNodeNode));
+                }
+            }
 
             throw new NotImplementedException();
+        }
+
+        private string[] GetWord(TrieNodes currentNodeNode)
+        {
+            var potentialStrings = new List<string>();
+            if (currentNodeNode == null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            if (!string.IsNullOrWhiteSpace(currentNodeNode.Value))
+            {
+                potentialStrings.Add(currentNodeNode.Value);
+            }
+
+
         }
     }
 }
