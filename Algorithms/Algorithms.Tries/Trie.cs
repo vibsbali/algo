@@ -78,28 +78,38 @@ namespace Algorithms.Tries
 
             if (currentNode != null)
             {
-                foreach (var currentNodeNode in currentNode.Nodes.Where(n => n != null))
-                {
-                    wordsToReturn.AddRange(GetWord(currentNodeNode));
-                }
+                var queue = new Queue<TrieNodes>();
+                queue.Enqueue(currentNode);
+                wordsToReturn.AddRange(GetWord(queue));
+
             }
 
-            throw new NotImplementedException();
+            return wordsToReturn.ToArray();
         }
 
-        private string[] GetWord(TrieNodes currentNodeNode)
+        private string[] GetWord(Queue<TrieNodes> currentQueueNodes)
         {
             var potentialStrings = new List<string>();
-            if (currentNodeNode == null)
+            if (currentQueueNodes == null)
             {
                 throw new InvalidOperationException();
             }
 
-            if (!string.IsNullOrWhiteSpace(currentNodeNode.Value))
+            while (currentQueueNodes.Count > 0)
             {
-                potentialStrings.Add(currentNodeNode.Value);
+                var currentNode = currentQueueNodes.Dequeue();
+                if (!string.IsNullOrWhiteSpace(currentNode.Value))
+                {
+                    potentialStrings.Add(currentNode.Value);
+                }
+
+                foreach (var nodes in currentNode.Nodes.Where(n => n != null))
+                {
+                    currentQueueNodes.Enqueue(nodes);
+                }
             }
 
+            return potentialStrings.ToArray();
 
         }
     }
