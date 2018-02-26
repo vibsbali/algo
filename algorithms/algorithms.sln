@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.CustomHashtable"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.HashTableTests", "Algorithms.HashTableTests\Algorithms.HashTableTests.csproj", "{BD083AC1-01E9-453C-8232-043247965CE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tries", "Algorithms.Tries\Algorithms.Tries.csproj", "{98B07FF2-D555-4F40-96DD-31D678553039}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tries.Tests", "Algorithms.Tries.Tests\Algorithms.Tries.Tests.csproj", "{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{BD083AC1-01E9-453C-8232-043247965CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD083AC1-01E9-453C-8232-043247965CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD083AC1-01E9-453C-8232-043247965CE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B07FF2-D555-4F40-96DD-31D678553039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B07FF2-D555-4F40-96DD-31D678553039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B07FF2-D555-4F40-96DD-31D678553039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B07FF2-D555-4F40-96DD-31D678553039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
