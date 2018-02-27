@@ -51,9 +51,9 @@ namespace Algorithms.Tries.Tests
             {
                 trie.Add(word);
             }
-           
 
-            
+
+
 
             var completedWords = trie.GenerateAutocomplete("a");
             Assert.IsNotNull(completedWords);
@@ -128,6 +128,41 @@ namespace Algorithms.Tries.Tests
             {
                 Assert.IsFalse(words.Where(w => w.StartsWith("a")).Contains(completedWord));
             }
+        }
+
+        [TestMethod]
+        public void Add_and_autocorrect_apple_banana_angie_angela_banano()
+        {
+            var trie = new Trie(256);
+            var wordsNotToBeFound = new List<string>
+            {
+                "abcd",
+                "dedf"
+            };
+
+            var words = new List<string>
+            {
+                "abc",
+                "gem",
+                "ann",
+                "and",
+                "kim"
+            };
+
+            foreach (var word in words)
+            {
+                trie.Add(word);
+            }
+
+            foreach (var wordNotTobeFound in wordsNotToBeFound)
+            {
+                trie.Add(wordNotTobeFound);
+            }
+
+            var incorrectWord = "jim";
+            var wordsFound = trie.GetAutocorrections(incorrectWord, 4);
+
+            Assert.IsTrue(wordsFound.Contains("abc"));
         }
     }
 }
