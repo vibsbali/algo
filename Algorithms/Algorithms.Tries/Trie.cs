@@ -110,7 +110,51 @@ namespace Algorithms.Tries
             }
 
             return potentialStrings.ToArray();
-
         }
+
+        //This method is stupidly slow just for practice only and incomplete
+        //Should be using edit distance algorithm
+        public string[] GetAutocorrections(string wordToCheck, int numberOfWordsToFind = 4)
+        {
+            if (!Find(wordToCheck))
+            {
+                var listOfWordsFound = new List<string>();
+                var queueOfstringsToExplore = new Queue<string>();
+                queueOfstringsToExplore.Enqueue(wordToCheck);
+
+                while (queueOfstringsToExplore.Any() && listOfWordsFound.Count < numberOfWordsToFind)
+                {
+                    var currentWord = queueOfstringsToExplore.Dequeue();
+                    var charArray = currentWord.ToCharArray();
+
+                    //Replace each character from a-z to check if new word can be found
+                    // canana -> aanana -> banana -> danana followed by cbnana ccnana cdnana cenanan etc.
+                    for (int i = 0; i < charArray.Length; i++)
+                    {
+                        foreach (var alphabet in CompleteAlphabets)
+                        {
+                            var newWord = currentWord.SwapAt(i, alphabet);
+                            if (Find(newWord) && !listOfWordsFound.Contains(newWord))
+                            {
+                                listOfWordsFound.Add(newWord);
+                            }
+
+                            queueOfstringsToExplore.Enqueue(newWord);
+                        }
+                    }
+                    //Remove one character at a time to check of new word can be made
+                    //
+
+                    //Add one character at a time to check of new word can be made
+
+                }
+
+                return listOfWordsFound.ToArray();
+            }
+
+            return new[] { wordToCheck };
+        }
+
+        public char[] CompleteAlphabets => new[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
     }
 }
