@@ -8,6 +8,7 @@ namespace Algorithms.Tries
 {
     public class TrieNodes
     {
+        //Hash can be used as well
         public TrieNodes[] Nodes { get; private set; }
         public string Value { get; set; }
 
