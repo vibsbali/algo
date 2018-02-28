@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tries", "Algorit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Tries.Tests", "Algorithms.Tries.Tests\Algorithms.Tries.Tests.csproj", "{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Heap", "Algorithms.Heap\Algorithms.Heap.csproj", "{E31FC0C1-9A80-4C33-8FFB-9441DB84E920}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.heap.Tests", "Algorithms.heap.Tests\Algorithms.heap.Tests.csproj", "{34182CAB-8E99-4143-AE26-EE7DA3B8747C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4702B1D-DC7E-43A8-9B18-ED7E38EB5F59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31FC0C1-9A80-4C33-8FFB-9441DB84E920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31FC0C1-9A80-4C33-8FFB-9441DB84E920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31FC0C1-9A80-4C33-8FFB-9441DB84E920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31FC0C1-9A80-4C33-8FFB-9441DB84E920}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
