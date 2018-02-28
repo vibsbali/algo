@@ -26,5 +26,22 @@ namespace Algorithms.heap.Tests
 
             Assert.AreEqual(8, nextMax, "The next item should be 8");
         }
+
+        [TestMethod]
+        public void AddThreeItems_In_DescendingOrder_Assert_FirstItem_Is_Largest()
+        {
+            var maxHeap = new MaxHeap<int>();
+            maxHeap.Add(1);
+            maxHeap.Add(2);
+            maxHeap.Add(3);
+
+            var itemRemoved = maxHeap.GetMax();
+
+            Assert.AreEqual(3, itemRemoved, "The item removed should be 3");
+
+            var nextMax = maxHeap.Peek();
+
+            Assert.AreEqual(2, nextMax, "The next item should be 2");
+        }
     }
 }

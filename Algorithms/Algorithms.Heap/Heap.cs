@@ -20,6 +20,32 @@ namespace Algorithms.Heap
 
             backingStore[Count++] = item;
 
+            BalanceTree(Count - 1);
+        }
+
+        private void BalanceTree(int indexInsertedAt)
+        {
+            if (indexInsertedAt <= 0)
+            {
+                return;
+            }
+
+            var itemValue = backingStore[indexInsertedAt];
+
+            var parentIndex = GetParentIndex(indexInsertedAt);
+            var parentValue = backingStore[parentIndex];
+
+            //If parent is smaller than child
+            if (parentIndex >= 0 && indexInsertedAt >= 0 && parentValue.CompareTo(itemValue) < 0)
+            {
+                Swap(parentIndex, indexInsertedAt);
+                BalanceTree(parentIndex);
+            }
+        }
+
+        private int GetParentIndex(int indexInsertedAt)
+        {
+            return (indexInsertedAt - 1) / 2;
         }
 
         public T Peek()
