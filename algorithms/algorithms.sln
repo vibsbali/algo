@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Heap", "Algorith
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.heap.Tests", "Algorithms.heap.Tests\Algorithms.heap.Tests.csproj", "{34182CAB-8E99-4143-AE26-EE7DA3B8747C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.PriorityQueue", "Algorithms.PriorityQueue\Algorithms.PriorityQueue.csproj", "{330533A7-F7B6-4731-A6AF-D85E657264D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.PriorityQueueTests", "Algorithms.PriorityQueueTests\Algorithms.PriorityQueueTests.csproj", "{E412977C-04E9-4BF8-9285-52C4C30344A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34182CAB-8E99-4143-AE26-EE7DA3B8747C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{330533A7-F7B6-4731-A6AF-D85E657264D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{330533A7-F7B6-4731-A6AF-D85E657264D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{330533A7-F7B6-4731-A6AF-D85E657264D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{330533A7-F7B6-4731-A6AF-D85E657264D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E412977C-04E9-4BF8-9285-52C4C30344A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E412977C-04E9-4BF8-9285-52C4C30344A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E412977C-04E9-4BF8-9285-52C4C30344A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E412977C-04E9-4BF8-9285-52C4C30344A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

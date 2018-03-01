@@ -72,7 +72,7 @@ namespace Algorithms.Heap
             var index = 0;
             int leftChild = (2 * index) + 1;
             int rightChild = (2 * index) + 2;
-            while (index <= Count && leftChild <= Count && rightChild <= Count)
+            while (index < Count && leftChild < Count && rightChild < Count)
             {
                 var newParent = NewParent(index, leftChild, rightChild);
                 //check if both children are smaller
