@@ -142,11 +142,12 @@ namespace Algorithms.Tries
                             queueOfstringsToExplore.Enqueue(newWord);
                         }
                     }
+
                     //Remove one character at a time to check of new word can be made
-                    //
+                    //canana -> anana -> nana -> ana -> na followed by cnana -> cana -> cna -> ca followed by caana -> cana -> cna etc
 
                     //Add one character at a time to check of new word can be made
-
+                    //kangaro -> akangaro -> bkangaro -> ckangaro -> etc followed by kaangaro -> kbangro -> kcangro -> etc followed by kangaro -> kangaroo 
                 }
 
                 return listOfWordsFound.ToArray();
