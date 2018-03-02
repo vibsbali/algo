@@ -164,5 +164,37 @@ namespace Algorithms.Tries.Tests
 
             Assert.IsTrue(wordsFound.Contains("abc"));
         }
+
+        [TestMethod]
+        public void Add_and_autocorrect_swone_to_stone()
+        {
+            var trie = new Trie(256);
+            var wordsNotToBeFound = new List<string>
+            {
+                "abcd",
+                "dedf"
+            };
+
+            var words = new List<string>
+            {
+                "stone",
+              
+            };
+
+            foreach (var word in words)
+            {
+                trie.Add(word);
+            }
+
+            foreach (var wordNotTobeFound in wordsNotToBeFound)
+            {
+                trie.Add(wordNotTobeFound);
+            }
+
+            var incorrectWord = "swone";
+            var wordsFound = trie.GetAutocorrections(incorrectWord, 1);
+
+            Assert.IsTrue(wordsFound.Contains("stone"));
+        }
     }
 }
