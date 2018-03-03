@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Sorting", "Algor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.SortingTests", "Algorithms.SortingTests\Algorithms.SortingTests.csproj", "{BA4CC8FB-A48E-4816-9598-65800442942B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.Graphs", "Algorithms.Graphs\Algorithms.Graphs.csproj", "{BD98599F-01AB-4897-87A4-81ACC53ADB70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.GraphTests", "Algorithms.GraphTests\Algorithms.GraphTests.csproj", "{EB77D29F-62F4-4994-886E-3CDEFF170FF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +121,14 @@ Global
 		{BA4CC8FB-A48E-4816-9598-65800442942B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA4CC8FB-A48E-4816-9598-65800442942B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA4CC8FB-A48E-4816-9598-65800442942B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD98599F-01AB-4897-87A4-81ACC53ADB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD98599F-01AB-4897-87A4-81ACC53ADB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD98599F-01AB-4897-87A4-81ACC53ADB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD98599F-01AB-4897-87A4-81ACC53ADB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB77D29F-62F4-4994-886E-3CDEFF170FF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB77D29F-62F4-4994-886E-3CDEFF170FF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB77D29F-62F4-4994-886E-3CDEFF170FF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB77D29F-62F4-4994-886E-3CDEFF170FF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
