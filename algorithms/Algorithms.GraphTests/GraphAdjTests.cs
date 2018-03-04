@@ -37,5 +37,42 @@ namespace Algorithms.GraphTests
             var neighbours = graph.GetNeighbours(5);
             Assert.AreEqual(6, neighbours[0]);
         }
+
+        [TestMethod]
+        public void Create_Graph_With_7_Nodes_One_At_A_Time()
+        {
+            var graph = new GraphAdjMatrix(new int[] { 0 });
+            graph.AddVertex();
+            graph.AddVertex();
+            graph.AddEdge(1, 2);
+            graph.AddEdge(2, 0);
+            graph.AddVertex();
+            graph.AddEdge(0, 3);
+            graph.AddVertex();
+            graph.AddEdge(3, 4);
+            graph.AddVertex();
+            graph.AddEdge(5, 4);
+            graph.AddVertex();
+            graph.AddEdge(6,5);
+            graph.AddEdge(6, 4);
+
+            var zerosNeighbours = graph.GetNeighbours(0);
+            var onesNeighbours = graph.GetNeighbours(1);
+            var twosNeighbours = graph.GetNeighbours(2);
+            var threessNeighbours = graph.GetNeighbours(3);
+            var foursNeighbours = graph.GetNeighbours(4);
+            var fivesNeighbours = graph.GetNeighbours(5);
+            var sixsNeighbours = graph.GetNeighbours(6);
+
+            Assert.AreEqual(3, zerosNeighbours[0]);
+            Assert.IsTrue(sixsNeighbours.Contains(5));
+            Assert.IsTrue(sixsNeighbours.Contains(4));
+            Assert.IsTrue(onesNeighbours.Contains(2));
+
+            Assert.IsTrue(twosNeighbours.Contains(0));
+            Assert.IsTrue(threessNeighbours.Contains(4));
+            Assert.IsTrue(foursNeighbours.Count == 0);
+            Assert.IsTrue(fivesNeighbours.Contains(4));
+        }
     }
 }

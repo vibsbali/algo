@@ -24,9 +24,10 @@ namespace Algorithms.Graphs
         //The assumption is that the vertex will be added one next to the existing sequence
         public void AddVertex()
         {
-            //adds next Vertices 
-            Vertices.Add(NumberOfVertices + 1);
+            //IMPORTANT - zero indexing means Vertices.Add is done after
+            //the adjacency list' index is instantiated
             adjList.Add(Vertices.Count, new List<int>());
+            Vertices.Add(NumberOfVertices + 1);
         }
 
         //This add method works for directed graph where firstVertex is the starting node
@@ -38,7 +39,11 @@ namespace Algorithms.Graphs
                 throw new InvalidOperationException();
             }
 
-            adjList[firstVertex].Add(secondVertex);
+            //If not already in the list
+            if (!adjList[firstVertex].Contains(secondVertex))
+            {
+                adjList[firstVertex].Add(secondVertex);
+            }
         }
 
         public List<int> GetNeighbours(int vertex)
