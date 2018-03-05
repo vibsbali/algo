@@ -74,5 +74,7 @@ namespace Algorithms.GraphTests
             Assert.IsTrue(foursNeighbours.Count == 0);
             Assert.IsTrue(fivesNeighbours.Contains(4));
         }
+
+       
     }
 }

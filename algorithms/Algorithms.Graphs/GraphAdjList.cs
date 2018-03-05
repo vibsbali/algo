@@ -56,5 +56,10 @@ namespace Algorithms.Graphs
         {
             return adjList[vertex].ToList();
         }
+
+        public void PrintGraph()
+        {
+           throw new NotImplementedException();
+        }
     }
 }

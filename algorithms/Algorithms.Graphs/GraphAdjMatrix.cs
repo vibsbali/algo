@@ -68,5 +68,19 @@ namespace Algorithms.Graphs
 
             return neighbours;
         }
+
+        public void PrintGraph()
+        {
+            for (int i = 0; i < NumberOfVertices; i++)
+            {
+                Console.Write(" | ");
+                for (int j = 0; j < NumberOfVertices; j++)
+                {
+                    Console.Write(adjMatrix[i,j]);
+                    Console.Write(" | ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }

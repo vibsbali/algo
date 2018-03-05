@@ -10,5 +10,6 @@ namespace Algorithms.Graphs
         void AddDirectedEdge(int firstVertex, int secondVertex);
         void AddUnDirectedEdge(int firstVertex, int secondVertex);
         List<int> GetNeighbours(int vertex);
+        void PrintGraph();
     }
 }
