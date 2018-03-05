@@ -10,18 +10,18 @@ namespace Algorithms.BinarySearchTrees
     public class BinarySearchTreeWithParent<T> : ICollection<T>
     where T : IComparable<T>
     {
-        internal BinaryNode<T> Head { get; set; }
-        internal class BinaryNode<T>
+        internal BinaryNode Head { get; set; }
+        internal class BinaryNode
         {
             public T Value { get; set; }
 
-            public BinaryNode<T> Parent { get; set; }
-            public BinaryNode<T> LeftChild { get; set; }
-            public BinaryNode<T> RightChild { get; set; }
+            public BinaryNode Parent { get; set; }
+            public BinaryNode LeftChild { get; set; }
+            public BinaryNode RightChild { get; set; }
             public bool HasRightChild => this.RightChild != null;
             public bool HasLeftChild => this.LeftChild != null;
 
-            public BinaryNode(T value, BinaryNode<T> parent = null)
+            public BinaryNode(T value, BinaryNode parent = null)
             {
                 Value = value;
                 Parent = parent;
@@ -75,7 +75,7 @@ namespace Algorithms.BinarySearchTrees
         {
             if (Head == null)
             {
-                Head = new BinaryNode<T>(value, null);
+                Head = new BinaryNode(value, null);
             }
             else
             {
@@ -86,7 +86,7 @@ namespace Algorithms.BinarySearchTrees
                     {
                         if (currentNode.LeftChild == null)
                         {
-                            currentNode.LeftChild = new BinaryNode<T>(value, currentNode);
+                            currentNode.LeftChild = new BinaryNode(value, currentNode);
                             break;
                         }
                         else
@@ -98,7 +98,7 @@ namespace Algorithms.BinarySearchTrees
                     {
                         if (currentNode.RightChild == null)
                         {
-                            currentNode.RightChild = new BinaryNode<T>(value, currentNode);
+                            currentNode.RightChild = new BinaryNode(value, currentNode);
                             break;
                         }
                         else
@@ -123,7 +123,7 @@ namespace Algorithms.BinarySearchTrees
             return FindNode(value) != null;
         }
 
-        private BinaryNode<T> FindNode(T value)
+        private BinaryNode FindNode(T value)
         {
             var current = Head;
             while (current != null)

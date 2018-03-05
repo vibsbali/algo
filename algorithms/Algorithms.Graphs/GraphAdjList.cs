@@ -32,7 +32,7 @@ namespace Algorithms.Graphs
 
         //This add method works for directed graph where firstVertex is the starting node
         //and secondVertex is the ending node
-        public void AddEdge(int firstVertex, int secondVertex)
+        public void AddDirectedEdge(int firstVertex, int secondVertex)
         {
             if (firstVertex > Vertices.Count || secondVertex > Vertices.Count)
             {
@@ -44,6 +44,12 @@ namespace Algorithms.Graphs
             {
                 adjList[firstVertex].Add(secondVertex);
             }
+        }
+
+        public void AddUnDirectedEdge(int firstVertex, int secondVertex)
+        {
+            AddDirectedEdge(firstVertex, secondVertex);
+            AddDirectedEdge(secondVertex, firstVertex);
         }
 
         public List<int> GetNeighbours(int vertex)

@@ -20,7 +20,7 @@ namespace Algorithms.GraphTests
             var graph = new GraphAdjList(new int[] { 0, 1, 2, 3, 4, 5 });
             Assert.AreEqual(6, graph.NumberOfVertices);
 
-            graph.AddEdge(0, 1);
+            graph.AddDirectedEdge(0, 1);
             var neighbours = graph.GetNeighbours(0);
             Assert.AreEqual(1, neighbours[0]);
         }
@@ -32,7 +32,7 @@ namespace Algorithms.GraphTests
             Assert.AreEqual(6, graph.NumberOfVertices);
 
             graph.AddVertex();
-            graph.AddEdge(5, 6);
+            graph.AddDirectedEdge(5, 6);
             var neighbours = graph.GetNeighbours(5);
             Assert.AreEqual(6, neighbours[0]);
         }
@@ -44,17 +44,17 @@ namespace Algorithms.GraphTests
             graph.AddVertex();
             graph.AddVertex();
             graph.AddVertex();
-            graph.AddEdge(1, 2);
-            graph.AddEdge(2, 0);
+            graph.AddDirectedEdge(1, 2);
+            graph.AddDirectedEdge(2, 0);
             graph.AddVertex();
-            graph.AddEdge(0, 3);
+            graph.AddDirectedEdge(0, 3);
             graph.AddVertex();
-            graph.AddEdge(3, 4);
+            graph.AddDirectedEdge(3, 4);
             graph.AddVertex();
-            graph.AddEdge(5, 4);
+            graph.AddDirectedEdge(5, 4);
             graph.AddVertex();
-            graph.AddEdge(6, 5);
-            graph.AddEdge(6, 4);
+            graph.AddDirectedEdge(6, 5);
+            graph.AddDirectedEdge(6, 4);
 
             var zerosNeighbours = graph.GetNeighbours(0);
             var onesNeighbours = graph.GetNeighbours(1);
